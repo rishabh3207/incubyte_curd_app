@@ -1,5 +1,3 @@
-from distutils.log import error
-from email import message
 from flask import Flask,render_template,request,redirect,flash
 from model import db, Words
 
@@ -47,7 +45,12 @@ def update():
         word1 = request.form['word1']
         word2 = request.form['word2']
         word_data = Words.query.filter_by(word=word1).first()
-        if word_data:
+        word2_data = Words.query.filter_by(word=word2).first()
+        if word2_data:
+            message = 'Word2 already exists'
+            words = Words.query.all()
+            return render_template('home.html',words = words, message=message)
+        elif word_data:
             db.session.delete(word_data)
             db.session.commit()
             word_data = Words(word=word2)
