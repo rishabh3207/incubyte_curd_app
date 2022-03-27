@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HOME</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container-fluid" >
+        <h1>This is a CURD application</h1>
+        <br><br>
+    <form class="form-inline" action="/" method = "POST">
+        <div class="form-group mb-2">
+            <p>Enter Word <input type = "text" name = "word" /></p>
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <input type = "submit" value = "ADD" />
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <input type = "submit" value = "Delete" formaction="{{ url_for('delete') }}"/>
+        </div>
+        <a href='/update'> Edit </a>
+    </form>
+
+    {% if message %}  
+    <p><strong>Message</strong>: {{message}}</p>  
+    {% endif %} 
+
+    <h2> WORDS: </h2>
+    <div class="table-responsive-xl" style="padding: 2%;">
+        <table id="word_table" class="table">
+            <tbody>
+                {% for word in words %}
+                <tr>
+                    <td>
+                        {{word.word}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    <div>
+</body>
+</html>

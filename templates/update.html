@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Update</title>
+</head>
+<body>
+
+<h1>Update word</h1>
+<form action="{{ url_for('update') }}" method = "POST">
+    <p>Enter Word <input type = "text" name = "word1" /></p>
+    <p>Replace With <input type = "text" name = "word2" /></p>
+    <input type = "submit" value = "Update" />
+</form>
+
+</body>
+</html>
